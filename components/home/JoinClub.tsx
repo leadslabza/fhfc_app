@@ -2,6 +2,7 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { club, membership } from "@/lib/content/club";
 import { formatRand } from "@/lib/content/shop";
+import { registerHref } from "@/lib/navigation";
 
 export function JoinClub() {
   return (
@@ -78,9 +79,7 @@ export function JoinClub() {
             ))}
           </ol>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <ButtonLink href={`mailto:${club.contact.email}?subject=Joining%20Forest%20Hills%20FC`}>
-              Email the club
-            </ButtonLink>
+            <ButtonLink href={registerHref}>Register</ButtonLink>
             <p className="text-sm text-slate">
               Or call{" "}
               <a
