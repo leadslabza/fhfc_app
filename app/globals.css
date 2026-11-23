@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+/*
+ * Forest Hills FC design tokens ("Floodlit Forest").
+ * Brand green is sampled from the official crest. Everything else is built
+ * around it: a deep forest canvas, chalk-white type and a single warm
+ * floodlight accent used sparingly.
+ */
+@theme {
+  --color-forest-950: #04110a;
+  --color-forest-900: #08200f;
+  --color-forest-800: #0d2e18;
+  --color-forest-700: #134223;
+  --color-forest-600: #1b5a30;
+
+  --color-crest: #009933;
+  --color-crest-dark: #007a29;
+  --color-pitch: #3fd06a;
+
+  --color-chalk: #f5f8f3;
+  --color-mist: #e3ebe2;
+  --color-ink: #0c1a12;
+  --color-slate: #4a5a50;
+
+  --color-floodlight: #f3b541;
+
+  --font-display: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --tracking-tightest: -0.035em;
+
+  --animate-rise: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    background: var(--color-chalk);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-floodlight);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility container-site {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
+  }
+}
+
+/* Faint pitch markings used as background structure on dark sections. */
+@utility bg-pitch-lines {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 96px 96px;
+}
